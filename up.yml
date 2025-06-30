@@ -2,7 +2,11 @@
   hosts: localhost
   gather_facts: false
   tasks:
-  - name: Print a message
-    ansible.builtin.debug:
-      msg: Hello Ansible
+  - name: download vscode
+    ansible.builtin.shell: curl -L -o /tmp/vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868
+    args:
+      creates: /tmp/vscode.deb
+  - name: install vscode
+    ansible.builtin.shell: dpkg -i /tmp/vscode.deb
+    become: yes
 
