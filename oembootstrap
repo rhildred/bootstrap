@@ -1,4 +1,6 @@
 #!/bin/bash
 
 apt update && apt install git ansible
-# that's it
+#bootstrap ansible
+git clone https://github.com/salesucation/oembootstrap /tmp/oembootstrap
+ansible-playbook /tmp/oemboostrap/up.yml
