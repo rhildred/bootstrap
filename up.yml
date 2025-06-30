@@ -9,4 +9,6 @@
   - name: install vscode
     ansible.builtin.shell: dpkg -i /tmp/vscode.deb
     become: yes
+    args:
+      creates: /usr/bin/code
 
