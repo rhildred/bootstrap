@@ -2,7 +2,7 @@
   hosts: localhost
   gather_facts: false
   tasks:
-  - name: Print the gateway for each host when defined
+  - name: Print a message
     ansible.builtin.debug:
       msg: Hello Ansible
 
