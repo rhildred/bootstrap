@@ -11,4 +11,8 @@
     become: yes
     args:
       creates: /usr/bin/code
+  - name: install code-server
+    ansible.builtin.shell: curl -fsSL https://code-server.dev/install.sh | sh
+    args:
+      creates: /usr/bin/code-server
 
