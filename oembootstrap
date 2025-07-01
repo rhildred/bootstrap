@@ -13,12 +13,12 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # install dependencies
-apt update && apt install -y git ansible  docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+apt update && apt install -y git ansible  docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin cloudflared
 
 # make passwordless sudo
 
 sudo sed -i /etc/sudoers -re 's/^%sudo.*/%sudo   ALL=(ALL:ALL) NOPASSWD: ALL/g'
 
 #bootstrap ansible
-git clone https://github.com/salesucation/oembootstrap /tmp/oembootstrap
-ansible-playbook /tmp/oembootstrap/up.yml
+git clone https://github.com/salesucation/bootstrap /tmp/bootstrap
+ansible-playbook /tmp/bootstrap/up.yml
