@@ -1,0 +1,18 @@
+http_address = "127.0.0.1:4180"
+tls_cert_file = ""
+tls_key_file = ""
+upstreams = [
+  "http://127.0.0.1:5050/"
+]
+request_logging = true
+pass_basic_auth = true
+pass_user_headers = true
+pass_host_header = true
+client_id = "your_github_client_id"
+client_secret = "your_github_client_secret"
+pass_access_token = false
+provider = "github"
+cookie_name = "_oauth2_proxy"
+cookie_secret = "your_cookie_secret"
+cookie_refresh = "1h"
+session_store_type = "cookie"

@@ -1,0 +1,19 @@
+[Unit]
+     Description=oauth2-proxy daemon service
+     After=network.target
+
+     [Service]
+     # Replace with the appropriate user and group
+     User=ubuntu
+     Group=ubuntu
+     # Replace with the actual path to your oauth2-proxy executable and config file
+     ExecStart=/usr/local/oauth2-proxy-v7.9.0.linux-amd64/oauth2-proxy --github-user="<your github username>" --config=/etc/oauth2-proxy.cfg
+     # Allow graceful reloading of the service
+     ExecReload=/bin/kill -HUP $MAINPID
+     # Restart the service automatically if it crashes
+     Restart=always
+     # Stop the service when the process exits
+     KillMode=process
+
+     [Install]
+     WantedBy=multi-user.target

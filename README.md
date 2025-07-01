@@ -25,7 +25,7 @@ credentials-file: /home/ubuntu/.cloudflared/<tunnel-uuid>.json
 
 ingress:
   - hostname: <your-domain>
-    service: http://localhost:5051 # port oauth2-proxy is listening on
+    service: http://localhost:4180 # port oauth2-proxy is listening on
 
   - service: http_status:404
 ```
@@ -39,10 +39,16 @@ cloudflared tunnel route dns <tunnel-uuid> <your-domain>
 Then to get your tunnel started automatically:
 
 ```bash
-sudo cloudflared --config ~/.cloudflared/config.yml service install
+sudo cloudflared --config /etc/cloudflared/config.yml service install
 sudo systemctl start cloudflared
 sudo systemctl status cloudflared
 ```
 
-1. need to add oauth2-proxy
+To add oauth2 proxy.
 
+1. Copy `oauth2-proxy.cfg.sample` to `/etc/oauth2-proxy.cfg`
+2. Edit to have your_github_client_id and your_github_client_secret and the github-user the way you need them.
+3. run `systemctl enable oauth2-proxy.service`
+4. run `systemctl start oauth2-proxy.service`
+
+Now you should be able to login to your instance from the internet with your github credentials.
