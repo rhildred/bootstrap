@@ -11,8 +11,21 @@
     become: yes
     args:
       creates: /usr/bin/code
+  - name: Create a user 'ubuntu' with a home directory
+    ansible.builtin.user:
+      name: ubuntu
+      create_home: yes
+      append: true
+      groups: docker,sudo
+      shell: /bin/bash
+    become: yes
   - name: install code-server
     ansible.builtin.shell: curl -fsSL https://code-server.dev/install.sh | sh
     args:
       creates: /usr/bin/code-server
+  - name: make code-server a service
+    ansible.builtin.shell: systemctl enable --now code-server@\ubuntu
+    become: yes
+    args:
+      creates: /usr/lib/systemd/system/code-server@.service
 
