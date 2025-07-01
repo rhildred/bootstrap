@@ -11,7 +11,7 @@
     become: yes
     args:
       creates: /usr/bin/code
-  - name: Create a user 'ubuntu' with a home directory
+  - name: Create a user 'ubuntu' with a home diretory
     ansible.builtin.user:
       name: ubuntu
       create_home: yes

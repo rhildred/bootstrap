@@ -1,9 +1,10 @@
 #!/bin/bash
-# Add Docker's official GPG key:
+# Add Docker's and cloudflare's official GPG key:
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /etc/apt/keyrings/cloudflare-main.gpg >/dev/null
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # Add the repository to Apt sources:
@@ -11,6 +12,8 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+echo 'deb [signed-by=/etc/apt/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list  
 
 # install dependencies
 apt update && apt install -y git ansible  docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin cloudflared
@@ -20,5 +23,5 @@ apt update && apt install -y git ansible  docker-ce docker-ce-cli containerd.io 
 sudo sed -i /etc/sudoers -re 's/^%sudo.*/%sudo   ALL=(ALL:ALL) NOPASSWD: ALL/g'
 
 #bootstrap ansible
-git clone https://github.com/salesucation/bootstrap /tmp/bootstrap
+git clone https://github.com/rhildred/bootstrap /tmp/bootstrap
 ansible-playbook /tmp/bootstrap/up.yml
