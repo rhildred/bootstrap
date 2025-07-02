@@ -2,7 +2,7 @@
 to configure machines with git and ansible
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/salesucation/oembootstrap/main/oembootstrap)
+bash <(curl -s https://raw.githubusercontent.com/rhildred/bootstrap/main/oembootstrap)
 ```
 
 You will need to configure cloudflared for your own tunnel. To get a certificate from your cloudflare account:
