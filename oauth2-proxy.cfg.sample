@@ -4,6 +4,9 @@ tls_key_file = ""
 upstreams = [
   "http://127.0.0.1:5050/"
 ]
+email_domains = [
+  "*"
+]
 request_logging = true
 pass_basic_auth = true
 pass_user_headers = true

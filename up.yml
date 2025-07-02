@@ -40,6 +40,11 @@
     args:
       creates: /usr/lib/systemd/system/code-server@.service
 
+  - name: start code-server
+    ansible.builtin.shell: sudo systemctl start code-server@ubuntu
+    args:
+      creates: /home/ubuntu/.config/code-server/config.yaml
+
   - name: Copy config
     ansible.builtin.copy:
       src: code-server-config.yml
