@@ -17,7 +17,7 @@ Then you can create a tunnel:
 cloudflared tunnel create <tunelName>
 ```
 
-You need the id from this to create a `~/.cloudflared/config.yml` config file:
+You need the id from this to create a `/etc/cloudflared/config.yml` config file:
 
 ```yaml
 tunnel: <tunnel-uuid>
@@ -46,8 +46,8 @@ sudo systemctl status cloudflared
 
 To add oauth2 proxy.
 
-1. Copy `oauth2-proxy.cfg.sample` to `/etc/oauth2-proxy.cfg`
-2. Edit to have your_github_client_id and your_github_client_secret and the github-user the way you need them.
+1. Edit `/etc/oauth2-proxy.cfg` to have your_github_client_id and your_github_client_secret the way you need them.
+2. Edit `/etc/systemd/system/oauth2-proxy.service` to have your github-user the way you need it.
 3. run `systemctl enable oauth2-proxy.service`
 4. run `systemctl start oauth2-proxy.service`
 

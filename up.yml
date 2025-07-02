@@ -19,6 +19,15 @@
       groups: docker,sudo
       shell: /bin/bash
     become: yes
+
+  - name: Create a source directory if it does not exist
+    ansible.builtin.file:
+      path: /home/ubuntu/source
+      state: directory
+      mode: '0755'
+      owner: ubuntu
+      group: ubuntu
+
   - name: install code-server
     ansible.builtin.shell: curl -fsSL https://code-server.dev/install.sh | sh
     args:
@@ -44,6 +53,13 @@
     ansible.builtin.copy:
       src: oauth2-proxy.service
       dest: /etc/systemd/system/oauth2-proxy.service
+      owner: ubuntu
+      group: ubuntu
+    become: yes
+  - name: Copy service config
+    ansible.builtin.copy:
+      src: oauth2-proxy.cfg.sample
+      dest: /etc/oauth2-proxy.cfg
       owner: ubuntu
       group: ubuntu
     become: yes
