@@ -40,6 +40,11 @@
     args:
       creates: /usr/lib/systemd/system/code-server@.service
 
+  - name: enable code-server
+    ansible.builtin.shell: sudo systemctl enable code-server@ubuntu
+    args:
+      creates: /etc/systemd/system/default.target.wants/code-server@ubuntu.service
+
   - name: start code-server
     ansible.builtin.shell: sudo systemctl start code-server@ubuntu
     args:
