@@ -26,6 +26,8 @@ credentials-file: /home/ubuntu/.cloudflared/<tunnel-uuid>.json
 ingress:
   - hostname: <your-domain>
     service: http://localhost:4180 # port oauth2-proxy is listening on
+  - hostname: <your-dev-domain>
+    service: http://localhost:8080 # anything you run on this port will be accessible from the hostname ... use to smoke test
 
   - service: http_status:404
 ```
