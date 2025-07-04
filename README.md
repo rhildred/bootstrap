@@ -15,6 +15,7 @@ Then you can create a tunnel:
 
 ```bash
 cloudflared tunnel create <tunelName>
+sudo mkdir -p /etc/cloudflared
 ```
 
 You need the id from this to create a `/etc/cloudflared/config.yml` config file:
