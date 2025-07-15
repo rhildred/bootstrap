@@ -48,10 +48,10 @@ cloudflared tunnel route dns <tunnel-uuid> <your-domain>
 Then to get your tunnel started automatically:
 
 ```bash
-
-```sudo cloudflared --config /etc/cloudflared/config.yml service install
+sudo cloudflared --config /etc/cloudflared/config.yml service install
 sudo systemctl start cloudflared
 sudo systemctl status cloudflared
+```
 
 To add oauth2 proxy.
 
