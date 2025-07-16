@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# delete /etc/apt/sources.list if it exists as we are esentially starting over and it has the cdrom in it
+# remove mention of cdrom from /etc/apt/sources.list
 
-sudo rm -f /etc/apt/sources.list
+[ -f /etc/apt/sources.list ] && sudo mv -f /etc/apt/sources.list /etc/apt/sources.list.bak && sudo bash -c "grep -v cdrom /etc/apt/sources.list.bak > /etc/apt/sources.list"
 
 # Add Docker's and cloudflare's official GPG key:
 sudo apt-get update
