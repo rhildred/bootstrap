@@ -72,3 +72,9 @@
       owner: ubuntu
       group: ubuntu
     become: yes
+  - name: make docker-server a service
+    ansible.builtin.shell: systemctl enable docker && systemctl start docker
+    become: yes
+    args:
+      creates: /var/run/docker.sock
+
