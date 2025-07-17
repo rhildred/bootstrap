@@ -20,9 +20,18 @@ echo \
 
 echo 'deb [signed-by=/etc/apt/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list  
 
-
 # install dependencies
-sudo apt update && sudo apt install -y git ansible python3-pip python3-kubernetes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin cloudflared timeshift
+sudo apt update && sudo apt install -y git docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin cloudflared timeshift make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+# install latest version of python 
+
+curl -fsSL https://pyenv.run | bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
+source ~/.bashrc
+pyenv install 3
+pyenv global 3
 
 # make passwordless sudo
 
