@@ -32,6 +32,7 @@ echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
 source ~/.bashrc
 pyenv install 3
 pyenv global 3
+pip install ansible
 
 # make passwordless sudo
 
