@@ -32,8 +32,8 @@ echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bas
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
 eval "$(pyenv init - bash)"
-pyenv install 3
-pyenv global 3
+#pyenv install 3
+#pyenv global 3
 pip install ansible
 
 # make passwordless sudo
