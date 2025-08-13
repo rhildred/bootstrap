@@ -21,7 +21,7 @@ echo \
 echo 'deb [signed-by=/etc/apt/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list  
 
 # install dependencies
-sudo apt update && sudo apt install -y git docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin cloudflared timeshift make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+sudo apt update && sudo apt install -y git docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin cloudflared timeshift make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev ansible
 
 # install latest version of python 
 
